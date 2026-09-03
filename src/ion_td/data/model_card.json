@@ -1,0 +1,44 @@
+{
+  "model_version": "rdkit-rf-pentazolate-v1",
+  "status": "experimental",
+  "target": "thermal decomposition onset temperature in degrees Celsius",
+  "training_scope": "36 monovalent CHNO cations paired with the pentazolate anion",
+  "features": {
+    "rdkit_descriptors": "all descriptors exposed by the installed RDKit version, sorted by name",
+    "morgan": {"radius": 2, "size": 512}
+  },
+  "estimator": {
+    "type": "RandomForestRegressor",
+    "n_estimators": 500,
+    "random_state": 42,
+    "max_features": 0.5,
+    "min_samples_leaf": 2,
+    "n_jobs": 1
+  },
+  "validation": {
+    "n": 36,
+    "r2": 0.19063331006386774,
+    "mae_c": 8.040509295033676,
+    "rmse_c": 9.918835471574775,
+    "conformal_half_width_c": 17.3053986111111
+  },
+  "applicability": {
+    "anion": "N1=NN=N[N-]1",
+    "cation_charge": 1,
+    "elements": ["H", "C", "N", "O"],
+    "minimum_similarity": 0.18,
+    "temperature_range_c": [80.8, 125.9]
+  },
+  "limitations": [
+    "Small single-anion dataset",
+    "LOO R2 is only 0.19; predictions are screening estimates, not quantitative guarantees",
+    "The conformal interval is an in-domain empirical interval and is not guaranteed out of domain",
+    "Thermal decomposition depends on experimental protocol and solid-state effects not encoded by 2D cation features"
+  ],
+  "validated_environment": {
+    "python": "3.12.10",
+    "numpy": "2.2.6",
+    "rdkit": "2025.03.5",
+    "scikit_learn": "1.8.0"
+  }
+}

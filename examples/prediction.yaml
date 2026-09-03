@@ -1,0 +1,5 @@
+name: hydroxylammonium-pentazolate
+SMILES:
+  cation: "[NH3+]O"
+  anion: "N1=NN=N[N-]1"
+allow_out_of_domain: false
