@@ -9,6 +9,8 @@ Generated for the HEMERA architecture review on 2026-09-03. The candidate compar
 - Package: `ion-td 0.1.0`, Python >=3.10, src-layout under `src/ion_td`.
 - Scope: thermal-decomposition onset screening for monovalent CHNO cations paired with the pentazolate
   anion; deterministic RDKit/Morgan model; applicability and uncertainty output; optional xTB/SOAP geometry.
+- GitHub: <https://github.com/Bagabaga007/ion_Td>, `main`, commit
+  `e5c4cf61c55380108559f1209e0f629ce64bd4f2`.
 - Training data: corrected 36-row new-Td-salt baseline, including `salt36=+94 °C`.
 
 ## Verification snapshot
