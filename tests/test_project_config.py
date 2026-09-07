@@ -19,6 +19,16 @@ def test_pyproject_and_manifest_contract():
     assert project["tool"]["coverage"]["run"]["branch"] is True
     assert project["tool"]["coverage"]["report"]["fail_under"] == 100
     assert "recursive-include tests *.py" in (root / "MANIFEST.in").read_text()
+    assert "recursive-include examples" in (root / "MANIFEST.in").read_text()
+
+
+def test_operable_example_contract():
+    root = Path(__file__).resolve().parents[1]
+    assert (root / "docs/usage.md").is_file()
+    assert (root / "examples/README.md").is_file()
+    assert (root / "examples/run_prediction.py").is_file()
+    assert "ion-td optimize" in (root / "docs/usage.md").read_text()
+    assert "maximum_tanimoto_similarity" in (root / "examples/README.md").read_text()
 
 
 def test_training_and_source_manifest_hashes():

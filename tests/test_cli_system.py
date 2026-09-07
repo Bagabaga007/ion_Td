@@ -1,5 +1,8 @@
 import json
+import os
 import stat
+import subprocess
+import sys
 from pathlib import Path
 
 import pytest
@@ -41,6 +44,34 @@ def test_config_predict_and_validate(capsys):
     assert json.loads(capsys.readouterr().out)["maximum_tanimoto_similarity"] == 1.0
     assert main(["validate"]) == 0
     assert json.loads(capsys.readouterr().out)["n"] == 36
+
+
+def test_module_entrypoint_and_packaged_example(tmp_path):
+    root = Path(__file__).resolve().parents[1]
+    env = os.environ.copy()
+    env["PYTHONPATH"] = str(root / "src")
+    help_result = subprocess.run(
+        [sys.executable, "-m", "ion_td", "--help"],
+        cwd=root,
+        env=env,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert help_result.returncode == 0
+    assert "usage: ion-td" in help_result.stdout
+
+    output = tmp_path / "prediction.json"
+    example_result = subprocess.run(
+        [sys.executable, str(root / "examples/run_prediction.py"), "--output", str(output)],
+        cwd=root,
+        env=env,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert example_result.returncode == 0, example_result.stderr
+    assert json.loads(output.read_text())["in_domain"] is True
 
 
 def test_optimize_cli_with_executable_stub(tmp_path, capsys):

@@ -36,12 +36,18 @@ pip install -e ".[dev]"
 ```bash
 ion-td predict --config examples/prediction.yaml
 
+# 等价的模块入口；适合源码目录或调试环境
+PYTHONPATH=src python -m ion_td predict --config examples/prediction.yaml
+
 ion-td predict \
   --name hydroxylammonium-pentazolate \
   --cation '[NH3+]O' \
   --anion 'N1=NN=N[N-]1' \
   --output result.json
 ```
+
+完整的逐步操作说明见 [`docs/usage.md`](docs/usage.md)，可运行案例见
+[`examples/README.md`](examples/README.md) 和 `examples/run_prediction.py`。
 
 输出包括预测温度、90% 经验区间、树间标准差、最大 Morgan/Tanimoto 相似度、是否域内、
 警告和模型留一法指标。
@@ -66,6 +72,9 @@ ion-td optimize \
   --output-dir ./work \
   --seed 20260903
 ```
+
+这一步是可选的真实外部程序工作流；没有 xTB 时仍可运行预测、`validate` 和 `show-data`。
+完整的 xTB 输入、输出工件和失败处理说明见 [`docs/usage.md`](docs/usage.md)。
 
 每个任务使用独立目录；显式向 xTB 传递 RDKit 形式电荷；要求退出码为零、`.xtboptok`
 和非空 `.xtbopt.xyz`。不会扫描或移动调用者工作目录中的其他文件。

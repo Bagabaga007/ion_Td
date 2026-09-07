@@ -9,13 +9,15 @@ Generated for the HEMERA architecture review on 2026-09-03. The candidate compar
 - Package: `ion-td 0.1.0`, Python >=3.10, src-layout under `src/ion_td`.
 - Scope: thermal-decomposition onset screening for monovalent CHNO cations paired with the pentazolate
   anion; deterministic RDKit/Morgan model; applicability and uncertainty output; optional xTB/SOAP geometry.
+- Operable examples: `examples/run_prediction.py` and `examples/prediction.yaml` provide a
+  no-network prediction path; `docs/usage.md` documents model validation and the optional xTB path.
 - GitHub: <https://github.com/Bagabaga007/ion_Td>, branch `main`; the current verified SHA is
   maintained in the HEMERA `system.json` manifest to avoid stale self-references in this report.
 - Training data: corrected 36-row new-Td-salt baseline, including `salt36=+94 °C`.
 
 ## Verification snapshot
 
-- 27 pytest tests across unit/integration/config/system.
+- 29 pytest tests across unit/integration/config/system.
 - 409/409 Python statements and 78/78 branches covered.
 - Ruff, real xTB 6.7.1 charged optimization, finite 3696-D molecular SOAP, sdist/wheel and isolated wheel
   prediction pass.
