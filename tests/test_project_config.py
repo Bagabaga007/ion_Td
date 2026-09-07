@@ -36,6 +36,9 @@ def test_project_profile_metadata_contract():
     profile = (root / "docs/project-profile.md").read_text()
     assert "thermal-decomposition" in profile
     assert "uncertainty-quantification" in profile and "xTB" in profile
+    metadata = json.loads((root / "docs/github-metadata.json").read_text())
+    assert metadata["name"] == "ion_Td"
+    assert "xtb" in metadata["topics"] and "hemera" in metadata["topics"]
 
 
 def test_training_and_source_manifest_hashes():

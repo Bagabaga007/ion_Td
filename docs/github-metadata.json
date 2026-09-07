@@ -1,0 +1,16 @@
+{
+  "name": "ion_Td",
+  "description": "Reproducible screening workflow for thermal-decomposition temperatures of pentazolate energetic salts.",
+  "homepage": "https://github.com/Bagabaga007/ion_Td/blob/main/docs/usage.md",
+  "topics": [
+    "energetic-materials",
+    "thermal-decomposition",
+    "pentazolate",
+    "rdkit",
+    "scikit-learn",
+    "xtb",
+    "cheminformatics",
+    "uncertainty-quantification",
+    "hemera"
+  ]
+}
