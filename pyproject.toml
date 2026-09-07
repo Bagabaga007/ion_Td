@@ -6,6 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "ion-td"
 version = "0.1.0"
 description = "可复现的五唑离子盐热分解温度实验性评估工作流"
+keywords = ["energetic-materials", "thermal-decomposition", "pentazolate", "rdkit", "scikit-learn", "xtb", "cheminformatics", "uncertainty-quantification", "HEMERA"]
 readme = "README.md"
 requires-python = ">=3.10"
 license = "LicenseRef-Proprietary"
@@ -16,6 +17,11 @@ dependencies = [
   "rdkit>=2024.3",
   "PyYAML>=6",
 ]
+
+[project.urls]
+Homepage = "https://github.com/Bagabaga007/ion_Td"
+Repository = "https://github.com/Bagabaga007/ion_Td"
+Documentation = "https://github.com/Bagabaga007/ion_Td/blob/main/docs/usage.md"
 
 [project.optional-dependencies]
 geometry = ["dscribe>=2.1"]

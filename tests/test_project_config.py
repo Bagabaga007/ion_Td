@@ -31,6 +31,13 @@ def test_operable_example_contract():
     assert "maximum_tanimoto_similarity" in (root / "examples/README.md").read_text()
 
 
+def test_project_profile_metadata_contract():
+    root = Path(__file__).resolve().parents[1]
+    profile = (root / "docs/project-profile.md").read_text()
+    assert "thermal-decomposition" in profile
+    assert "uncertainty-quantification" in profile and "xTB" in profile
+
+
 def test_training_and_source_manifest_hashes():
     data = files("ion_td").joinpath("data")
     training = data.joinpath("training.csv").read_bytes()
