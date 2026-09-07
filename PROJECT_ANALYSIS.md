@@ -17,7 +17,7 @@ Generated for the HEMERA architecture review on 2026-09-03. The candidate compar
 
 ## Verification snapshot
 
-- 29 pytest tests across unit/integration/config/system.
+- 30 pytest tests across unit/integration/config/system.
 - 409/409 Python statements and 78/78 branches covered.
 - Ruff, real xTB 6.7.1 charged optimization, finite 3696-D molecular SOAP, sdist/wheel and isolated wheel
   prediction pass.
