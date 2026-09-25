@@ -18,18 +18,16 @@ The geometry `run` mode performs one bounded hydroxylammonium RDKit→xTB
 optimization in an automatically removed temporary directory. It never writes to
 the repository.
 
-## Current scientific blocker
+## Verified scientific baseline
 
-The existing uncommitted edit to `src/ion_td/data/model_card.json` is intentionally
-preserved. Its validation values do not equal live LOO under the exact environment
-declared in that model card. Live LOO reproduces the Git HEAD values instead.
-Consequently:
+The earlier uncommitted `model_card.json` metrics did not match live LOO in their
+declared environment. The original file is preserved in the delivery archive.
+The frozen model card records the reproducible LOO result. Consequently:
 
-- artifact integrity can still pass because the manifest records the observed file;
-- `cpu.model_card_live_loo` must fail and the command must exit 1;
-- geometry can pass independently;
-- this candidate is not a releasable model until the owner supplies provenance for
-  the modified metrics or authorizes restoring the reproducible baseline.
+- training CSV, model card, code, environment, and live LOO are bound together;
+- `cpu.model_card_live_loo` and the CPU profile pass in the locked environment;
+- geometry passes independently after xTB visibility and hash checks.
 
-The manifest therefore reports `blocked_model_card_conflict`; it does not present
-the dirty working tree as a clean release.
+The frozen manifest records the tested source commit; the release tag points to
+the following manifest commit. Reinstating the earlier candidate metrics requires
+their own reproducible training data, code, and environment evidence.

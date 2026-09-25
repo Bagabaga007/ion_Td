@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "project": "ion_Td",
+  "version": "0.1.0",
+  "release_status": "frozen",
+  "source_revision": {
+    "vcs": "git",
+    "commit": "ce766691d34bf509dc9e9a24dc4ccf754275ff59",
+    "state": "committed_source",
+    "dirty": false,
+    "note": "The model card records live LOO in the exact locked environment. The sidecar manifest is committed after the tested source snapshot.",
+    "trees": {
+      "cpu": {"paths": ["src/ion_td/*.py"], "sha256": "21dace1e34959bd4a005d23137874122f801372a6ee20c337b621e95f0efd323", "file_count": 9},
+      "geometry": {"paths": ["src/ion_td/geometry.py", "src/ion_td/soap.py"], "sha256": "0994cc6d50c06a64e7e15cfffd5d629c83f06be50a9b0dfbdbca39d2c5f9e28f", "file_count": 2}
+    }
+  },
+  "profiles": {
+    "cpu": {
+      "lock": "delivery/locks/cpu.json",
+      "description": "Training-data integrity, exact validated Python environment, live leave-one-out validation, and prediction smoke test.",
+      "environment": {"numpy": "2.2.6", "scikit-learn": "1.8.0", "rdkit": "2025.3.5", "PyYAML": "6.0.3"},
+      "python": "3.12.10",
+      "training_records": 36,
+      "validation_absolute_tolerance": 1e-12
+    },
+    "geometry": {
+      "lock": "delivery/locks/geometry.json",
+      "description": "RDKit geometry plus pinned xTB executable visibility/version/hash and optional real optimization smoke test.",
+      "python": "3.12.10",
+      "environment": {"rdkit": "2025.3.5", "dscribe": "2.1.2"},
+      "xtb": {"version": "6.7.1", "path": "/workplace/home/yangze/packages/xtb-6.7.1/bin/xtb", "sha256": "debf27a9e0fa4bfb5ca75aafe4b90d8211f08ec2f4a482f375a4987212eaa12a"},
+      "smoke": {"cation_smiles": "[NH3+]O", "seed": 20260903, "timeout_seconds": 600}
+    }
+  },
+  "scientific_baseline": {
+    "status": "verified",
+    "decision_required": false,
+    "reason": "The model-card metrics reproduce under the exact declared environment and agree with live leave-one-out validation.",
+    "model_card_validation": {"n": 36, "r2": 0.19063331006386774, "mae_c": 8.040509295033676, "rmse_c": 9.918835471574775, "conformal_half_width_c": 17.3053986111111},
+    "live_loo": {"n": 36, "r2": 0.19063331006386774, "mae_c": 8.040509295033676, "rmse_c": 9.918835471574775, "conformal_half_width_c": 17.3053986111111},
+    "evidence_environment": {"python": "3.12.10", "numpy": "2.2.6", "rdkit": "2025.3.5", "scikit_learn": "1.8.0"}
+  },
+  "artifacts": [
+    {"path": "pyproject.toml", "sha256": "18666c9a93d7530a6e3a1eb36ad1376e86d2a3c1c7ea438fa002c5361dac619f", "size_bytes": 1631, "role": "project_metadata", "required": true, "profiles": ["cpu", "geometry"]},
+    {"path": "scripts/release_preflight.py", "sha256": "ab50134a657e9aa798be1673279d614e3c3b74f5ef0bbc313aaa347a4a51ea64", "size_bytes": 11618, "role": "release_preflight", "required": true, "profiles": ["cpu", "geometry"]},
+    {"path": "delivery/locks/cpu.json", "sha256": "c72fb2168d20ab985ad8d3563d5f0875831ce5571b8fca380f8c8fd2a4d67f99", "size_bytes": 967, "role": "cpu_lock", "required": true, "profiles": ["cpu"]},
+    {"path": "delivery/locks/geometry.json", "sha256": "b3f7b1b2571653064afeb766589806fa8c2730ba60cfe6180261186ade20fa11", "size_bytes": 824, "role": "geometry_lock", "required": true, "profiles": ["geometry"]},
+    {"path": "src/ion_td/data/training.csv", "sha256": "0054479d19d19ca15b3440d449f3315a92f017ea911c6e8fd065554b2e4d1d6c", "size_bytes": 3969, "role": "training_data", "required": true, "profiles": ["cpu"]},
+    {"path": "src/ion_td/data/source_manifest.json", "sha256": "32d4bfbf23ee5ed8c351d647942d8223e180ec0c603b9621ba5087c098cdf303", "size_bytes": 1237, "role": "training_provenance", "required": true, "profiles": ["cpu"]},
+    {"path": "src/ion_td/data/model_card.json", "sha256": "df7730283bb3b14ecc2b665af3f47b8c0da2ef90e2b9ea7beedc4626dd88c774", "size_bytes": 1447, "role": "model_card_verified", "required": true, "profiles": ["cpu"]},
+    {"path": "examples/prediction.yaml", "sha256": "f8c29cb0f66627911c791add496dd2fa7f49a0b5bf71ae7388c9dbe880a059c5", "size_bytes": 114, "role": "cpu_prediction_example", "required": true, "profiles": ["cpu"]}
+  ],
+  "generated_by": "Codex BPPA release-lock workflow; SHA-256 tree format is '<file_sha256><two spaces><relative_path>\\n' sorted by relative path"
+}
