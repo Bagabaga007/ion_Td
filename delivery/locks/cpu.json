@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "project": "ion_Td",
+  "profile": "cpu",
+  "version": "0.1.0",
+  "release_status": "candidate_verified",
+  "python": "3.12.10",
+  "environment": {"numpy": "2.2.6", "scikit-learn": "1.8.0", "rdkit": "2025.3.5", "PyYAML": "6.0.3"},
+  "source_tree_sha256": "21dace1e34959bd4a005d23137874122f801372a6ee20c337b621e95f0efd323",
+  "training": {"path": "src/ion_td/data/training.csv", "sha256": "0054479d19d19ca15b3440d449f3315a92f017ea911c6e8fd065554b2e4d1d6c", "records": 36},
+  "model_card": {"path": "src/ion_td/data/model_card.json", "sha256": "df7730283bb3b14ecc2b665af3f47b8c0da2ef90e2b9ea7beedc4626dd88c774", "state": "verified-live-loo"},
+  "live_loo": {"n": 36, "r2": 0.19063331006386774, "mae_c": 8.040509295033676, "rmse_c": 9.918835471574775, "conformal_half_width_c": 17.3053986111111},
+  "provenance": "Live LOO was recomputed in the exact environment declared by model_card.json and agrees with all published validation metrics."
+}

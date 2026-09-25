@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "project": "ion_Td",
+  "profile": "geometry",
+  "version": "0.1.0",
+  "python": "3.12.10",
+  "environment": {
+    "rdkit": "2025.3.5",
+    "dscribe": "2.1.2"
+  },
+  "source_tree_sha256": "0994cc6d50c06a64e7e15cfffd5d629c83f06be50a9b0dfbdbca39d2c5f9e28f",
+  "xtb": {
+    "version": "6.7.1",
+    "path": "/workplace/home/yangze/packages/xtb-6.7.1/bin/xtb",
+    "sha256": "debf27a9e0fa4bfb5ca75aafe4b90d8211f08ec2f4a482f375a4987212eaa12a"
+  },
+  "smoke": {
+    "cation_smiles": "[NH3+]O",
+    "formal_charge": 1,
+    "seed": 20260903,
+    "timeout_seconds": 600,
+    "required_outputs": [".hydroxylammonium.xtboptok", "hydroxylammonium.xtbopt.xyz", "stdout.log", "stderr.log"]
+  },
+  "provenance": "Bound to source_manifest.json validated_xtb and a bounded disposable RDKit-to-xTB smoke workflow."
+}
